@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <title>YelpCamp</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">YelpCamp</a>
+                </div>
+                <div class="navbar-collapse collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <% if(!currentUser){ %>
+                            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                            <li class="nav-item"><a href="/register" class="nav-link">Sign Up</a></li>
+                        <% }else{ %>
+                            <li class="nav-item"> <a href="#" class="nav-link"><strong>Curently Signed in as <%=currentUser.username%></strong></a> </li>
+                            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                   <% if(success && success.length > 0){ %>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <%= success %>
+                        </div>
+                    <% } %>
+                    <% if(error && error.length > 0){ %>
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <%= error %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
