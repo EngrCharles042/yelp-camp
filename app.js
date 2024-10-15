@@ -11,6 +11,7 @@ const express = require("express"),
     Campground = require("./models/campground"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
+    path = require('path'),
     moment = require("moment"); // Import moment
     // seedDB = require("./seed");
 
@@ -29,7 +30,8 @@ mongoose.connect('mongodb+srv://obicharles94:Degame042@scicluster.gfeypot.mongod
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
+app.set('views', path.join(__dirname + '/views')); // Explicitly set the views directory
+app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB();
